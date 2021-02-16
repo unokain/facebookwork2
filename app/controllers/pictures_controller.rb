@@ -11,7 +11,8 @@ class PicturesController < ApplicationController
     end
   end
   def create
-    @picture = current_user.pictures.build(picture_params)
+    @picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
     if params[:back]
       render :new
     else
